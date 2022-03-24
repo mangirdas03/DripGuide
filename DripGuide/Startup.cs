@@ -34,7 +34,7 @@ namespace DripGuide
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<DripContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
 
-
+            //
             services.AddControllers();
             services.AddScoped<JwtService>();
         }
