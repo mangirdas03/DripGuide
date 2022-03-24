@@ -33,8 +33,6 @@ namespace DripGuide
             services.AddCors();
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<DripContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
-
-            //dsdasdasdasd
             services.AddControllers();
             services.AddScoped<JwtService>();
         }
