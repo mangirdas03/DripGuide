@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gladi\\Desktop\\DripGuide\\DripGuide.csproj": {}
+    "C:\\Users\\gladi\\Desktop\\DripGuideWeb\\DripGuide\\DripGuide.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gladi\\Desktop\\DripGuide\\DripGuide.csproj": {
+    "C:\\Users\\gladi\\Desktop\\DripGuideWeb\\DripGuide\\DripGuide.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gladi\\Desktop\\DripGuide\\DripGuide.csproj",
+        "projectUniqueName": "C:\\Users\\gladi\\Desktop\\DripGuideWeb\\DripGuide\\DripGuide.csproj",
         "projectName": "DripGuide",
-        "projectPath": "C:\\Users\\gladi\\Desktop\\DripGuide\\DripGuide.csproj",
+        "projectPath": "C:\\Users\\gladi\\Desktop\\DripGuideWeb\\DripGuide\\DripGuide.csproj",
         "packagesPath": "C:\\Users\\gladi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gladi\\Desktop\\DripGuide\\obj\\",
+        "outputPath": "C:\\Users\\gladi\\Desktop\\DripGuideWeb\\DripGuide\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gladi\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qV3qOS9qzsVA28AnD82sE2v1DifP+9+hS3QrN8Du/voxex1qZwXvu4d9tg2r/7SUU8aBla1sY4XmT1TLMLxBBg==",
+  "dgSpecHash": "cVSrQMnmYnJ31hRHKQbI6kP1pbQ2Eb6FrFDSXabqI2YOTJikTMpxvWdG2D9+gq5sRMy1S0ttxKpV+79qkKISLg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gladi\\Desktop\\DripGuide\\DripGuide.csproj",
+  "projectFilePath": "C:\\Users\\gladi\\Desktop\\DripGuideWeb\\DripGuide\\DripGuide.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gladi\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\gladi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
