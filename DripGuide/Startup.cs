@@ -52,7 +52,7 @@ namespace DripGuide
                 .WithOrigins(new[] { "http://localhost:3000"})
                 .AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials()
+                .AllowCredentials().WithExposedHeaders("Page-Count")
             );
             app.UseAuthorization();
 

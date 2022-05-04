@@ -18,5 +18,7 @@ namespace DripGuide.Models
         public string Email { get; set; }
 
         public int Age { get; set; }
+
+        public bool Role { get; set; }
     }
 }

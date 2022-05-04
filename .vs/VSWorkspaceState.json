@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DripGuide"
   ],
-  "SelectedNode": "\\DripGuide.sln",
+  "SelectedNode": "\\DripGuide\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

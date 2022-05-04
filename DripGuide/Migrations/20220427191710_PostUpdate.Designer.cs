@@ -4,14 +4,16 @@ using DripGuide.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DripGuide.Migrations
 {
     [DbContext(typeof(DripContext))]
-    partial class DripContextModelSnapshot : ModelSnapshot
+    [Migration("20220427191710_PostUpdate")]
+    partial class PostUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +41,6 @@ namespace DripGuide.Migrations
 
                     b.Property<int>("FK_User")
                         .HasColumnType("int");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Material")
                         .HasColumnType("nvarchar(100)");

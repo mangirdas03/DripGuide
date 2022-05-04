@@ -4,14 +4,16 @@ using DripGuide.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DripGuide.Migrations
 {
     [DbContext(typeof(DripContext))]
-    partial class DripContextModelSnapshot : ModelSnapshot
+    [Migration("20220419094152_Post")]
+    partial class Post
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,8 +27,8 @@ namespace DripGuide.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Colorway")
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(500)");
@@ -40,26 +42,8 @@ namespace DripGuide.Migrations
                     b.Property<int>("FK_User")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Material")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
-
-                    b.Property<string>("StyleCode")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("SubmitDate")
-                        .HasColumnType("datetime");
 
                     b.Property<string>("Title")
                         .IsRequired()

@@ -1,0 +1,124 @@
+.App {
+  text-align: center;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+
+/* Login */
+.form-signin {
+  
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-control{
+  width: 250px;
+}
+
+.dropdown-search{
+  border-radius: 0.25rem;
+  width: 350px;
+  background-color: white;
+  position:absolute;
+  overflow: auto;
+  margin-top: 39px;
+  scroll-behavior: smooth;
+  min-height: 0px;
+  max-height: 200px;
+
+}
+.dropdown-search-item{
+  text-align: left;
+  padding: 5px;
+  padding-left: 15px;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  align-items: center;
+}
+
+.dropdown-search-item:hover{
+  cursor: pointer;
+  border-color: lightgrey;
+}
+
+ul{
+  list-style-type: none;;
+}
+
+
+
+.item-image-div{
+  width: 400px;
+  height: 400px;
+  border-style: solid;
+  border-width: 2px;
+  overflow: hidden;
+  display: flex;
+}
+
+.item-image{
+  max-width: 400px;
+  max-height: 400px;
+  margin: auto;
+  
+}
+.input-clear{
+  margin-left: -50px; 
+  z-index: 100;
+}
+
+
+.dropdown-search-image-container{
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.dropdown-search-image{
+  max-width: 30px;
+  max-height: 30px;
+
+  
+}
+.dropdown-search-text{
+  display: inline;
+  margin: auto;
+  font-size: 20px;
+}

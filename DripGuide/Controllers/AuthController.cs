@@ -114,7 +114,8 @@ namespace DripGuide.Controllers
                 Name = registerdto.Name,
                 Password = BCryptNet.HashPassword(registerdto.Password),
                 Age = registerdto.Age,
-                Email = registerdto.Email
+                Email = registerdto.Email,
+                Role = false
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -145,7 +146,7 @@ namespace DripGuide.Controllers
                 HttpOnly = true
             });
 
-            return Ok("Success");
+            return Ok(user);
         }
 
         private User FindUserByName(string name)
@@ -164,6 +165,8 @@ namespace DripGuide.Controllers
             try
             {
                 var jwt = Request.Cookies["jwt"];
+                if (jwt == null)
+                    return Unauthorized();
                 var token = _jwtservice.Verify(jwt);
 
                 int userId = int.Parse(token.Issuer);
@@ -207,6 +210,13 @@ namespace DripGuide.Controllers
 
                 return Unauthorized();
             }
+        }
+
+
+        [HttpGet("wtf")]
+        public IActionResult Wtf()
+        {
+            return Ok("wtf");
         }
 
     }
