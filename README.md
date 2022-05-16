@@ -1,4 +1,5 @@
-DripGuide - Website that created to help fashion enthusiasts find and collect information of various clothing items and footwear. Website users are able to browse throught the wide collection of items submitted by registered users and website moderators.
+DripGuide - Website that created to help fashion enthusiasts find and collect information of various clothing items and footwear. 
+Website users are able to browse throught the wide collection of items submitted by registered users and website moderators.
 
 This website was created by Mangirdas, a student of Kaunas University of Technology.
 Created using React.js, .NET Core API and MySQL.
