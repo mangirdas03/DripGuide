@@ -15,7 +15,7 @@ namespace DripGuide.Viewmodels
 
         public string Material { get; set; }
 
-        public int Price { get; set; }
+        public string Price { get; set; }
 
         public DateTime ReleaseDate { get; set; }
 
@@ -23,7 +23,7 @@ namespace DripGuide.Viewmodels
 
         public string Colorway { get; set; }
 
-        public int FK_Brand { get; set; }
+        public string FK_Brand { get; set; }
 
         public string Image { get; set; }
     }

@@ -4,14 +4,16 @@ using DripGuide.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DripGuide.Migrations
 {
     [DbContext(typeof(DripContext))]
-    partial class DripContextModelSnapshot : ModelSnapshot
+    [Migration("20220507184102_AgeRemoval")]
+    partial class AgeRemoval
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,8 +36,8 @@ namespace DripGuide.Migrations
                     b.Property<string>("Description2")
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<string>("FK_Brand")
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("FK_Brand")
+                        .HasColumnType("int");
 
                     b.Property<int>("FK_User")
                         .HasColumnType("int");
@@ -46,8 +48,8 @@ namespace DripGuide.Migrations
                     b.Property<string>("Material")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Price")
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime");
@@ -67,6 +69,8 @@ namespace DripGuide.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK_Post");
+
+                    b.HasIndex(new[] { "FK_Brand" }, "fk_brand");
 
                     b.HasIndex(new[] { "FK_User" }, "fk_user");
 

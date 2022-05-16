@@ -25,95 +25,18 @@ namespace DripGuide.Controllers
             _jwtservice = jwtservice;
         }
 
-
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        {
-            return await _context.Users.ToListAsync();
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            return user;
-        }
-
-
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            return Ok("Added!");
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return user;
-        }
-
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult<User>> UpdateUser(int id, User user)
-        {
-            user.Id = id;
-
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            //return NoContent();
-            return user;
-        }
-
-
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
-
-
-
-
-        ///////////////////////////////////////////////////
-
-
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(RegisterDTO registerdto)
         {
             //string mySalt = BCryptNet.GenerateSalt();
+            var user1 = _context.Users.FirstOrDefault(e => e.Name.Equals(registerdto.Name));
+            var user2 = _context.Users.FirstOrDefault(e => e.Email.Equals(registerdto.Email));
+            if (user1 != null || user2 != null)
+                return Conflict();
             var user = new User
             {
                 Name = registerdto.Name,
                 Password = BCryptNet.HashPassword(registerdto.Password),
-                Age = registerdto.Age,
                 Email = registerdto.Email,
                 Role = false
             };
@@ -122,8 +45,6 @@ namespace DripGuide.Controllers
 
             return Created("Created!", user);
         }
-
-
 
 
         [HttpPost("login")]
@@ -160,7 +81,7 @@ namespace DripGuide.Controllers
 
 
         [HttpGet("user")]
-        public IActionResult User()
+        public IActionResult GetUser()
         {
             try
             {
@@ -177,10 +98,117 @@ namespace DripGuide.Controllers
             }
             catch (Exception)
             {
-
                 return Unauthorized();
             }
         }
+
+
+
+
+        [HttpGet("users/{pageNumber}")]
+        public async Task<IActionResult> GetUsers([FromRoute] int pageNumber)
+        {
+            try
+            {
+                var jwt = Request.Cookies["jwt"];
+                if (jwt == null)
+                    return Unauthorized();
+                var token = _jwtservice.Verify(jwt);
+
+                int userId = int.Parse(token.Issuer);
+
+                var user = FindUserById(userId);
+                if (user.Role)
+                {
+                    int pageCount = 0;
+                    int itemsPerPage = 5;
+                    pageCount = (int)Math.Ceiling(_context.Users.Where(e => !e.Id.Equals(userId)).Count() / (decimal)itemsPerPage);
+                    Response.Headers.Add("Page-Count", pageCount.ToString());
+
+                    List<User> users = new List<User>();
+                    users = await _context.Users.Where(e => !e.Id.Equals(userId)).OrderBy(e => e.Id).Skip(itemsPerPage * (pageNumber - 1)).Take(itemsPerPage).ToListAsync();
+                    return Ok(users);
+                }
+
+                return Ok(user);
+            }
+            catch (Exception)
+            {
+                return Unauthorized();
+            }
+        }
+
+
+
+
+        [HttpPost("changerole/{id}")]
+        public async Task<IActionResult> ChangeRole([FromRoute] int id)
+        {
+            try
+            {
+                var jwt = Request.Cookies["jwt"];
+                if (jwt == null)
+                    return Unauthorized();
+                var token = _jwtservice.Verify(jwt);
+
+                int userId = int.Parse(token.Issuer);
+
+                var user = FindUserById(userId);
+                if (user.Role)
+                {
+                    User selectedUser = await _context.Users.FirstOrDefaultAsync(e => e.Id.Equals(id));
+                    if(selectedUser != null)
+                    {
+                        if (selectedUser.Role)
+                            selectedUser.Role = false;
+                        else selectedUser.Role = true;
+                        _context.Users.Update(selectedUser);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    return NotFound();
+                }
+                return Unauthorized();
+            }
+            catch (Exception)
+            {
+                return Unauthorized();
+            }
+        }
+
+        [HttpPost("deleteuser/{id}")]
+        public async Task<IActionResult> DeleteUser([FromRoute] int id)
+        {
+            try
+            {
+                var jwt = Request.Cookies["jwt"];
+                if (jwt == null)
+                    return Unauthorized();
+                var token = _jwtservice.Verify(jwt);
+
+                int userId = int.Parse(token.Issuer);
+
+                var user = FindUserById(userId);
+                if (user.Role)
+                {
+                    User selectedUser = await _context.Users.FirstOrDefaultAsync(e => e.Id.Equals(id));
+                    if (selectedUser != null)
+                    {
+                        _context.Users.Remove(selectedUser);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    return NotFound();
+                }
+                return Unauthorized();
+            }
+            catch (Exception)
+            {
+                return Unauthorized();
+            }
+        }
+
+
 
         [HttpPost("logout")]
         public IActionResult Logout()
@@ -189,35 +217,36 @@ namespace DripGuide.Controllers
             return Ok("Logged out");
         }
 
-
-        [HttpGet("test")]
-        public IActionResult Test()
+        [HttpPost("changepassword")]
+        public async Task<IActionResult> ChangePassword(PasswordDTO pw)
         {
             try
             {
                 var jwt = Request.Cookies["jwt"];
+                if (jwt == null)
+                    return Unauthorized();
                 var token = _jwtservice.Verify(jwt);
 
                 int userId = int.Parse(token.Issuer);
 
                 var user = FindUserById(userId);
 
-
-                return Ok("Test puslapis.");
+                if(BCryptNet.Verify(pw.currentPass, user.Password) && pw.newPass == pw.newPassConfirm)
+                {
+                    user.Password = BCryptNet.HashPassword(pw.newPass);
+                    _context.Users.Update(user);
+                    await _context.SaveChangesAsync();
+                    return Ok("Changed.");
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
             catch (Exception)
             {
-
                 return Unauthorized();
             }
         }
-
-
-        [HttpGet("wtf")]
-        public IActionResult Wtf()
-        {
-            return Ok("wtf");
-        }
-
     }
 }

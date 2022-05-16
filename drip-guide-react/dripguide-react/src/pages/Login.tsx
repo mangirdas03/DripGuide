@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useState} from "react";
+import React, {SyntheticEvent, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -9,30 +9,48 @@ const Login = (props: {setName: (name: string) => void}) => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState('');
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
 
     const Submit = async (e: SyntheticEvent) => {
         const MySwal = withReactContent(Swal)
         e.preventDefault();
+
+        if(name.length < 5 || password.length < 5){
+            MySwal.fire({
+                icon: "error",
+                title: <p>Wrong email or password!</p>,
+                color: 'white',
+                background: '#3e4956',
+                confirmButtonColor: 'lightblue'
+                });
+            return
+        }
+
         const response = await fetch('http://localhost:8000/api/login', {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({name, password})
         });
-
         if(response.ok)
         {
             const content = await response.json();
             props.setName(content.name);
-            localStorage.setItem("logged_user", "true");
-
+            //localStorage.setItem("logged_user", "true");
+            //if(content.role)
+            //    localStorage.setItem("admin", "true");
             MySwal.fire({
             icon: 'success',
-            title: <p>Sėkmingai prisijungėte!</p>,
+            title: <p>Successfully logged in!</p>,
             showConfirmButton: false,
             showCancelButton: false,
             showCloseButton: false,
-            timer: 1200
+            timer: 1200,
+            color: 'white',
+            background: '#3e4956',
             //didOpen: () => {
                 //MySwal.clickConfirm()
             //}
@@ -43,29 +61,34 @@ const Login = (props: {setName: (name: string) => void}) => {
         else{
             MySwal.fire({
                 icon: "error",
-                title: <p>Neteisingi prisijungimo duomenys!</p>,
-                text: "Patikrinkite ar teisingai įrašėte prisijungimo vardą bei slaptažodį."
+                title: <p>Wrong email or password!</p>,
+                color: 'white',
+                background: '#3e4956',
+                confirmButtonColor: 'lightblue'
                 });
         }
 
     }
 
-
-
-
     return (
-        <div>
-            <form onSubmit={Submit}>
-                <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-                <input type="name" className="form-control" placeholder="Name" required
-                    onChange={e => setName(e.target.value)}
-                />
-                <input type="password" className="form-control" placeholder="Password" required
-                    onChange={e => setPassword(e.target.value)}
-                />
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            </form>
-        </div>
+        <div className="center-container-small">
+            <h1 className="center-text-title">Sign in</h1>
+                <form onSubmit={Submit}>
+                    <div className="auth-element">
+                    <input type="name" className="auth-input" placeholder="Name"
+                        onChange={e => setName(e.target.value)}
+                    />
+                    </div>
+                    <div className="auth-element">
+                        <input type="password" className="auth-input" placeholder="Password"
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="auth-element">
+                        <button className="btn btn-lg" type="submit">Sign in</button>
+                    </div>
+                </form>
+            </div>
     );
 };
 

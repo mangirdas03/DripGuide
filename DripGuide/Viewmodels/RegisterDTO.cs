@@ -13,7 +13,5 @@ namespace DripGuide.Viewmodels
 
         public string Email { get; set; }
 
-        public int Age { get; set; }
-
     }
 }

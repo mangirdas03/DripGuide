@@ -26,9 +26,7 @@ namespace DripGuide.Models
             modelBuilder.Entity<User>().Property(u => u.Name).HasColumnType("nvarchar(50)").IsRequired();
             modelBuilder.Entity<User>().Property(u => u.Password).HasColumnType("nvarchar(150)").IsRequired();
             modelBuilder.Entity<User>().Property(u => u.Email).HasColumnType("nvarchar(50)").IsRequired();
-            modelBuilder.Entity<User>().Property(u => u.Age).HasColumnType("int");
             modelBuilder.Entity<User>().Property(u => u.Role).HasColumnType("tinyint");
-
 
 
 
@@ -42,14 +40,13 @@ namespace DripGuide.Models
 
             modelBuilder.Entity<Post>().Property(u => u.FK_User).HasColumnType("int");
             modelBuilder.Entity<Post>().HasIndex(e => e.FK_User, "fk_user");
-            modelBuilder.Entity<Post>().Property(u => u.FK_Brand).HasColumnType("int");
-            modelBuilder.Entity<Post>().HasIndex(e => e.FK_Brand, "fk_brand");
+            modelBuilder.Entity<Post>().Property(u => u.FK_Brand).HasColumnType("nvarchar(100)");
 
             modelBuilder.Entity<Post>().Property(u => u.SubmitDate).HasColumnType("datetime");
             modelBuilder.Entity<Post>().Property(u => u.Status).HasColumnType("int");
 
             modelBuilder.Entity<Post>().Property(u => u.Material).HasColumnType("nvarchar(100)");
-            modelBuilder.Entity<Post>().Property(u => u.Price).HasColumnType("int");
+            modelBuilder.Entity<Post>().Property(u => u.Price).HasColumnType("nvarchar(100)");
             modelBuilder.Entity<Post>().Property(u => u.ReleaseDate).HasColumnType("datetime");
             modelBuilder.Entity<Post>().Property(u => u.StyleCode).HasColumnType("nvarchar(100)");
             modelBuilder.Entity<Post>().Property(u => u.Colorway).HasColumnType("nvarchar(100)");
