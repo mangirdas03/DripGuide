@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-//const Home = () => {
 const User = (props: {name: string, role: boolean, mail: string}) => {
     const navigate = useNavigate();
     const [userRole, setRole] = useState("");
@@ -124,7 +123,6 @@ const User = (props: {name: string, role: boolean, mail: string}) => {
                         <button className="btn btn-lg" onClick={() => ChangePass()} type="button">Change</button>
                 </div>
             </div>
-            
 
         </div>
     );

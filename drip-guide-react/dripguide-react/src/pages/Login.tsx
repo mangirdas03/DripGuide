@@ -39,9 +39,6 @@ const Login = (props: {setName: (name: string) => void}) => {
         {
             const content = await response.json();
             props.setName(content.name);
-            //localStorage.setItem("logged_user", "true");
-            //if(content.role)
-            //    localStorage.setItem("admin", "true");
             MySwal.fire({
             icon: 'success',
             title: <p>Successfully logged in!</p>,

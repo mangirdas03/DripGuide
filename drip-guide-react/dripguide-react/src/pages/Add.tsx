@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import ImageWithFallback from "../components/Image";
-//import DatePicker from 'react-datepicker';
-import DatePicker from 'react-date-picker'
-
 
 const Add = (props: {name: string, role: boolean}) => {
     const navigate = useNavigate();
@@ -23,35 +20,6 @@ const Add = (props: {name: string, role: boolean}) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
-    //Old guard
-    // useEffect(() => {
-    //     async function getUser() {
-    //        var response = await fetch('http://localhost:8000/api/user', {
-    //           headers: {'Content-Type': 'application/json'},
-    //           credentials: 'include'
-    //       });
-    //       const content = await response.json();
-    //       console.log(props.name)
-    //       if(!content.name)
-    //       {
-    //         navigate('/');
-    //       }
-    //     }
-    //     getUser();
-    // })
-
-    // useEffect(() => {
-    //     if(title.length > 0)
-    //         setTest("✅")
-    //     if(title.length === 0)
-    //         setTest("")
-    //     if(fK_Brand.length > 0)
-    //         setTest2("✅")
-    //     if(fK_Brand.length === 0)
-    //         setTest2("")
-
-    // }, [title, fK_Brand]);
 
     const Submit = async (e: SyntheticEvent) => {
         const MySwal = withReactContent(Swal)

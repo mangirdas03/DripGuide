@@ -176,7 +176,7 @@ const Navbar = (props: {role: boolean, setRole: (role: boolean) => void, name: s
       right = (
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/user">👤 Settings</Link>
+            <Link className="nav-link" to="/user">👤 User</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" onClick={logout} to="/login">Logout</Link>

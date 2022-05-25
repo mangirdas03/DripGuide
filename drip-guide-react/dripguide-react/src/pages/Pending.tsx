@@ -3,7 +3,6 @@ import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 import ImageWithFallback from "../components/Image";
 
-//const Home = () => {
 const Pending = (props: {name: string, role: boolean}) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState<any[]>([]);
@@ -12,24 +11,6 @@ const Pending = (props: {name: string, role: boolean}) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
-
-    // useEffect(() => {
-    //     async function getUser() {
-    //        var response = await fetch('http://localhost:8000/api/user', {
-    //           headers: {'Content-Type': 'application/json'},
-    //           credentials: 'include'
-    //       });
-    //       const content = await response.json();
-    //       //console.log("Pending useEffect")
-    //       console.log(props.name)
-    //       if(!content.name || content.role == false)
-    //       {
-    //         navigate('/');
-    //       }
-    //     }
-    //     getUser();
-    //   })
       
     useEffect(() => {
         (
@@ -42,7 +23,6 @@ const Pending = (props: {name: string, role: boolean}) => {
                 if(response.ok)
                 {
                     const content = await response.json();
-                    //console.log(content);
                     setpageCount(Number(response.headers.get('Page-Count')));
                     setPosts(content);
                 }
@@ -69,7 +49,6 @@ const Pending = (props: {name: string, role: boolean}) => {
     const ViewDetails = async (post: any) => {
         navigate('./item/' + post.id);
     }
-
 
     return (
         <div className="center-container" data-theme={localStorage.getItem('theme')}>

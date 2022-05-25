@@ -42,29 +42,6 @@ const Item = (props : {role: boolean, name: string}) => {
                 timer: 1200
                 })
             }
-        // async function getUser() {
-        //    var response = await fetch('http://localhost:8000/api/user', {
-        //       headers: {'Content-Type': 'application/json'},
-        //       credentials: 'include'
-        //   });
-        // //   const content = await response.json();
-        //     const MySwal = withReactContent(Swal)
-        //     if(props.role === true)
-        //     {
-        //         navigate('/browse/edit/' + id);
-        //     }
-        //     else{
-        //     MySwal.fire({
-        //         icon: 'error',
-        //         title: <p>Tik administratoriui!</p>,
-        //         showConfirmButton: false,
-        //         showCancelButton: false,
-        //         showCloseButton: false,
-        //         timer: 1200
-        //         })
-        //     }
-        // }
-        //getUser();
     }
 
     useEffect(() => {
@@ -87,8 +64,6 @@ const Item = (props : {role: boolean, name: string}) => {
                     setDescription2(content.description2);
                     setMaterial(content.material);
                     setPrice(content.price);
-                    //var myDate = new Date(content.releaseDate);
-                    //var noTime = (myDate.getFullYear() + "-" + (myDate.getMonth()+1) + "-" + myDate.getDate()).toString();
                     setReleaseDate(content.releaseDate.substr(0, 10));
                     setStyleCode(content.styleCode);
                     setColorway(content.colorway);
@@ -163,42 +138,6 @@ const Item = (props : {role: boolean, name: string}) => {
                     }
                     <p className="tiny-text">Last edited: {edit}</p>
                 </div>
-            
-
-
-
-            {/* <div className="center-block">
-                <p className="center-block-title">{title}</p>
-                <p className="center-block-text">{colorway}</p>
-            </div>
-            <div className="item-image-div">
-                <ImageWithFallback 
-                    key={image}
-                    className="item-image"
-                    fallback={"http://assets.stickpng.com/images/5a461418d099a2ad03f9c999.png"}
-                    src={image}
-                />
-            </div>
-            <div className="right-block">
-                <p>Item details:</p>
-                <p>{description}</p>
-                <p>{description2}</p>
-                <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p>Retail price:</p>
-                <p>{price}</p>
-
-            </div>
-            
-            <div className="foot-container">
-                ad
-            </div> */}
-
-
-            {/* <p>{props.post.title}</p>
-            <p>{props.post.description}</p>
-            <p>{props.post.description2}</p> */}
-            
-            {/* <button className="w-100 btn btn-lg btn-danger" onClick={() => Edit()} >Edit</button> */}
         </div>
     );
 };

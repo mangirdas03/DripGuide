@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ImageWithFallback from "../components/Image";
 
-//const Home = () => {
 const Users = (props: {name: string, role: boolean}) => {
     const navigate = useNavigate();
     const [posts, setPosts] = useState<any[]>([]);
@@ -16,24 +15,6 @@ const Users = (props: {name: string, role: boolean}) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
-    
-    // useEffect(() => {
-    //     async function getUser() {
-    //        var response = await fetch('http://localhost:8000/api/user', {
-    //           headers: {'Content-Type': 'application/json'},
-    //           credentials: 'include'
-    //       });
-    //       const content = await response.json();
-    //       //console.log("Pending useEffect")
-    //       console.log(props.name)
-    //       if(!content.name || content.role == false)
-    //       {
-    //         navigate('/');
-    //       }
-    //     }
-    //     getUser();
-    //   })
       
     useEffect(() => {
         (
@@ -46,8 +27,6 @@ const Users = (props: {name: string, role: boolean}) => {
                 if(response.ok)
                 {
                     const content = await response.json();
-                    //console.log(content);
-                    
                     setpageCount(Number(response.headers.get('Page-Count')));
                     setPosts(content);
                     setPage(1);
@@ -149,8 +128,6 @@ const Users = (props: {name: string, role: boolean}) => {
         window.scrollTo(0, 0)
       };
 
-
-
     return (
         <div className="center-container" data-theme={localStorage.getItem('theme')}>
             <h1 className="center-text-title">Website users</h1>
@@ -159,11 +136,11 @@ const Users = (props: {name: string, role: boolean}) => {
             <table className="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>E-mail address</th>
-                        <th>Role</th>
-                        <th>Change role</th>
+                        <th className="table-text">#</th>
+                        <th className="table-text">Name</th>
+                        <th className="table-text">E-mail address</th>
+                        <th className="table-text">Role</th>
+                        <th className="table-text">Change role</th>
                         <th className="table-text">Delete user</th>
                     </tr>
                 </thead>
@@ -172,11 +149,11 @@ const Users = (props: {name: string, role: boolean}) => {
                     posts.map((post, key) => {
                         return(
                             <tr key={key}>
-                                <td>{key+1}</td>
-                                <td>{post.name}</td>
-                                <td>{post.email}</td>
-                                <td>{post.role ? "Administrator" : "User"}</td>
-                                <td>
+                                <td className="table-text">{key+1}</td>
+                                <td className="table-text">{post.name}</td>
+                                <td className="table-text">{post.email}</td>
+                                <td className="table-text">{post.role ? "Administrator" : "User"}</td>
+                                <td className="table-text">
                                     {post.role ? <button className="btn btn-sm" type="button" onClick={() => changeRole(post.id)} >🔻Demote</button> : <button className="btn btn-sm" type="button" onClick={() => changeRole(post.id)} >🔺Promote</button>}
                                 </td>
                                 <td className="table-text">
@@ -186,14 +163,11 @@ const Users = (props: {name: string, role: boolean}) => {
                         )
                     })
                     }
-                    
                 </tbody>
                 </table>
             <table>
             <th>
-
             </th>
-            
             
             </table>
             <ReactPaginate

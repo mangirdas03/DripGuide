@@ -49,151 +49,16 @@ function App() {
   });
 
 
-
-
-
  function RequireAuth({ children, redirectTo }:{children:any, redirectTo: any}) {
   if(!name)
     return <Navigate to={redirectTo}/>;
   return children;
-
-  // async function CheckUser() {
-  //   var response = await fetch('http://localhost:8000/api/user', {
-  //      headers: {'Content-Type': 'application/json'},
-  //      credentials: 'include'
-  //   });
-  //   const content = await response.json();
-  //   if(content.name)
-  //     setName(content.name)
-  //   else setName("un")
-    
-  // }
-  // CheckUser()
-  // while(name === ""){}
-  // if(name && name !== "un")
-  //   return children;
-  // else{
-  //   if(name === 'un')
-  //     setName("");
-  //   return <Navigate to={redirectTo}/>;
-  // }
-
-
-
-  //   useEffect( () =>{
-  //     (
-  //       async () => {
-  //           const response = await fetch('http://localhost:8000/api/user', {
-  //               headers: {'Content-Type': 'application/json'},
-  //               credentials: 'include'
-  //           });
-  //           const content = await response.json();
-  //           if(content.name)
-  //             setName(content.name);
-  //       }
-  //     )();
-  //   },[]);
-  //   if(!name) return null
-
-  // //checkUser();
-  // //if(name)
-  //   return children
-  // else{
-  //   return <Navigate to={redirectTo}/>;
-  // } 
-    // console.log("Auth: " + name)
-    // if(name){
-    //   return children
-    // }
-    // else{
-    //   return <Navigate to={redirectTo}/>
-    // } 
-
-  //var isLogged = localStorage.getItem("logged_user");
-      // //var isLogged = getUser();
-      // if(isLogged != "true")
-      // {
-      //   return <Navigate to={redirectTo}/>
-      // }
-      // else if(isLogged == "true"){
-      //   return children
-      // }
-    //const [isAUth, setAuth] = useState(false);
-
-    // useEffect(() => {
-    //   async function getToken() {
-    //      var response = await fetch('http://localhost:8000/api/user', {
-    //         headers: {'Content-Type': 'application/json'},
-    //         credentials: 'include'
-    //     });
-    //     const content = await response.json();
-    //     if(content.name)
-    //       setAuth(true);
-    //       return;
-    //   }
-    //   getToken();
-    // }, [isAUth])
-
-    //console.log(isAUth)
-    //if(isLogged == "true"){
-    //  return children;
-    //}
-    //return <Navigate to={redirectTo}/>;
   }
 
   function RequireAdmin({ children, redirectTo }:{children:any, redirectTo: any}) {
     if(!name && !role)
       return <Navigate to={redirectTo}/>;
     return children;
-    //var answer = false;
-    
-    // var answer = async function CheckAdmin() {
-    //   var response = await fetch('http://localhost:8000/api/user', {
-    //      headers: {'Content-Type': 'application/json'},
-    //      credentials: 'include'
-    //   });
-    //   const content = await response.json();
-    //   if(content.name && content.role){
-    //     setRole(content.role)
-    //     setName(content.name)
-    //   }
-      
-    // }
-    //const navigate = useNavigate();
-      // var a = async () => {
-      //     const response = await fetch('http://localhost:8000/api/user', {
-      //         headers: {'Content-Type': 'application/json'},
-      //         credentials: 'include'
-      //     });
-      //     const content = await response.json();
-      //     if(!content.name && !content.role)
-      //       navigate(redirectTo)
-      // }
-    //   var user;
-    //   var admin;
-
-
-    // fetch('http://localhost:8000/api/user', {
-    //   headers: {'Content-Type': 'application/json'},
-    //   credentials: 'include'
-    // }).then(response => response.json())
-    // .then(content =>{
-    //   user = content.name;
-    //   admin = content.role;
-
-    // });
-
-    // var a = useEffect(() => {
-    //    // This is be executed when the state changes
-       
-    // }, []);
-
-
-    // console.log(user)
-    // console.log(admin)
-    // if(user && admin)
-    //   return children;
-    // else return <Navigate to={redirectTo}/>;
   }
 
   function UnauthorizedOnly({ children, redirectTo }:{children:any, redirectTo: any}) {
@@ -243,8 +108,6 @@ function App() {
               </RequireAdmin>
             }/>
 
-            {/* <Route path="/pending" element={<Pending name={name}/>} />
-            <Route path="/pending/item/:id" element={<Review match={name}/>} /> */}
             <Route path="/pending" element={
               <RequireAdmin redirectTo="/">
                 <Pending name={name} role={role}/>
@@ -274,9 +137,8 @@ function App() {
           <a href='https://www.instagram.com/' target="_blank" className="fa fa-instagram"></a>
           <a href='https://twitter.com/' target="_blank" className="fa fa-twitter"></a>
         </div>
-        <p className="footer-right"><strong>Mangirdas Šakėnas IFF-9/1</strong></p>
+        <p className="footer-right"><strong>Mangirdas Šakėnas</strong></p>
       </div>
-    {/* <button onClick={switchTheme} >Switch to {theme === 'light' ? "Dark" : "Light"}</button> */}
     </div>
   );
 }

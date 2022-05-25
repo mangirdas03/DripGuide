@@ -4,11 +4,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ImageWithFallback from "../components/Image";
 
-interface Post {
-    title: string,
-    description: string,
-    description2: string;
-  }
 
 const Edit = (props : any) => {
     const navigate = useNavigate();
@@ -28,24 +23,6 @@ const Edit = (props : any) => {
         window.scrollTo(0, 0)
     }, [])
 
-
-    //Old guard
-    // useEffect(() => {
-    //     async function getUser() {
-    //        var response = await fetch('http://localhost:8000/api/user', {
-    //           headers: {'Content-Type': 'application/json'},
-    //           credentials: 'include'
-    //       });
-    //       const content = await response.json();
-    //       console.log(props.name)
-    //       if(!content.name || content.role == false)
-    //       {
-    //         navigate('/');
-    //       }
-    //     }
-    //     getUser();
-
-    //   })
     useEffect(() => {
         (
             async () => {
@@ -154,7 +131,6 @@ const Edit = (props : any) => {
                 const foo = async () => {
                     const response = await fetch('http://localhost:8000/api/Posts/' + id, {
                     method: 'DELETE',
-                    //headers: {'Content-Type': 'application/json'},
                     credentials: 'include'
                 });
                 if(response.ok)
@@ -289,55 +265,6 @@ const Edit = (props : any) => {
                     
                 </div>
             </div>
-            {/* <p>Review</p>
-            <p>{id}</p>
-            {/* <p>{post.title}</p>
-            // {JSON.stringify(post)} */}
-
-            {/* <form onSubmit={ConfirmPost}>
-                <input type="title" className="form-control" placeholder="Title" required
-                    value={title} onChange={e => setTitle(e.target.value)}
-                />
-                <input type="description" className="form-control" placeholder="Desc" required
-                    value={description} onChange={e => setDescription(e.target.value)}
-                />
-                 <input type="description2" className="form-control" placeholder="Desc2" required
-                    value={description2} onChange={e => setDescription2(e.target.value)}
-                />
-                <input type="material" className="form-control" placeholder="Material" required
-                    value={material} onChange={e => setMaterial(e.target.value)}
-                />
-                <input type="number" className="form-control" placeholder="Price" required
-                    value={price} onChange={e => setPrice(e.target.value)}
-                />
-                <input type="code" className="form-control" placeholder="Code" required
-                    value={stylecode} onChange={e => setStyleCode(e.target.value)}
-                />
-                <input type="colorway" className="form-control" placeholder="Colorway" required
-                    value={colorway} onChange={e => setColorway(e.target.value)}
-                />
-                <input type="number" className="form-control" placeholder="Brand" required
-                    value={FK_Brand} onChange={e => setBrand(e.target.value)}
-                />
-                <textarea className="form-control" placeholder="Link to the image" required
-                    value={image} onChange={e => setImage(e.target.value)}
-                />
-                
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Confirm edits</button>
-                <button className="w-100 btn btn-lg btn-danger" onClick={() => Delete()} >Delete</button>
-                
-            </form> */}
-            
-            {/* <input type="title" className="form-control" placeholder="Title" required
-                    value={title} onChange={e => setTitle(e.target.value)}
-                />
-
-            <button onClick={() => ConfirmPost()}>Confirm</button>
-            <button onClick={() => Delete()}>Delete</button> */}
-
-            {/* <p>{props.post.title}</p>
-            <p>{props.post.description}</p>
-            <p>{props.post.description2}</p> */}
         </div>
     );
 };

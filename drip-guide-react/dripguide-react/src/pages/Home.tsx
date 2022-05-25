@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-//const Home = () => {
 const Home = (props: {name: string}) => {
 
     useEffect(() => {
@@ -21,7 +20,7 @@ const Home = (props: {name: string}) => {
                     <Link className="btn btn-lg" to="/browse">🔥 Check out some drip 🔥</Link>
                 </div>
                 <div className="auth-element">
-                    <div className="landing-text">OR</div>
+                    <div className="center-text-title">OR</div>
                     <Link className="btn btn-lg landing-btn" to="/login">Sign In</Link>
                     <Link className="btn btn-lg landing-btn" to="/register">Sign Up</Link>
                 </div>

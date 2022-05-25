@@ -10,21 +10,6 @@ const Browse = (props: {name: string}) => {
     const [title, setTitle] = useState('🔥 Browsing all drip 🔥');
     const [pageCount, setpageCount] = useState(0);  
     const {query} = useParams();
-    // useEffect(() => {
-    //     const getPosts = async () => {
-    //         var res;
-    //         if(!id){
-    //             res = await fetch(`http://localhost:8000/api/Posts/Page/1`);
-    //         }
-    //         else{
-    //             res = await fetch(`http://localhost:8000/api/Posts/Page/1/${id}`);
-    //         } 
-    //         const data = await res.json();
-    //         setpageCount(Number(res.headers.get('Page-Count')));
-    //         setItems(data);
-    //     };
-    //     getPosts();
-    //   }, [id]);
 
     useEffect(() => {
         window.scrollTo(0, 0)

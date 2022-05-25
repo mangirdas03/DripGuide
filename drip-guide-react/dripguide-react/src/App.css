@@ -299,7 +299,7 @@ ul{
 .center-text-title{
   text-align: center;
   padding: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 35px;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -630,41 +630,6 @@ ul{
 }
 
 
-
-
-@media screen and (max-width: 1550px) {
-  .cards {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    
-  }
-}
-@media screen and (max-width: 1150px) {
-  .cards {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    
-  }
-}
-@media screen and (max-width: 880px) {
-  .cards {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto auto;
-    
-  }
-}
-@media screen and (max-width: 620px) {
-  .cards {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto;
-    
-  }
-}
-
   
 /* GRID */
 .grid-top { 
@@ -753,6 +718,7 @@ ul{
 .grid-bottom-right { 
   grid-area: 4 / 5 / 5 / 6; 
   margin: auto 0;
+  padding-right: 10px;
 }
 .btn-lg{
   background-color: var(--color);
@@ -781,7 +747,7 @@ ul{
 .tiny-text{
   margin-top: 40px;
   font-size: 12px;
-  position: absolute;
+
 }
 
 
@@ -885,4 +851,209 @@ ul{
 }
 .btn-sm:hover{
   color: var(--color);
+}
+
+
+/* RESPONSIVENESS */
+
+@media screen and (max-width: 1550px) {
+  .cards {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    
+  }
+}
+@media screen and (max-width: 1150px) {
+  .cards {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+  }
+}
+@media screen and (max-width: 880px) {
+  .cards {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    
+  }
+
+
+  /* LOGIN/REGISTER */
+  .center-container-small{
+    width: 70vw;
+  }
+
+  /* USERS */
+  .table-text, .btn-sm{
+    font-size: 12px;
+    padding: 5px !important;
+  }
+  .center-container{
+    padding: 10px;
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+
+}
+@media screen and (max-width: 620px) {
+  .cards {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  /* BROWSE/ITEM */
+  .grid-top-title{
+  font-size: 4.5vh;
+  }
+  .grid-top-text{
+  font-size: 2.5vh;
+  }
+  .grid-right-title{
+    font-size: 16px;
+  }
+  .grid-right-text{
+  font-size: 14px;
+  }
+  .unauth-text{
+    font-size: 12px;
+  }
+  .tiny-text{
+    margin-top: 20px;
+    font-size: 10px;
+  }
+  .small-link{
+   font-size: 14px;
+  }
+  .btn-lg{
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  /* LOGIN/REGISTER */
+  .center-container-small{
+    width: 80vw;
+  }
+
+  /* ADD/EDIT/REVIEW */
+  .grid-left-big, .grid-right-big { 
+    padding: 15px;
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+
+  .center-text-title-smaller{
+    font-size: 1rem;
+  }
+  .container-text{
+    font-size: 12px;
+  }
+
+  /* USERS */
+  .table-text, .btn-sm{
+    font-size: 10px;
+    padding: 3px !important;
+  }
+  .center-container{
+    padding: 10px;
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+
+}
+
+
+@media screen and (max-width: 500px) {
+  /* FOOTER */
+  .footer-left{
+    font-size: 8px;
+  }
+  .footer-right{
+    font-size: 9px;
+  }
+  .fa-google, .fa-facebook, .fa-instagram, 
+  .fa-twitter{
+    padding-top: 6px;
+    height: 20px;
+    width: 20px;
+    font-size: 9px;
+    margin: 0 2px;
+  }
+
+  /* SEARCH BAR, DROPDOWN, SWITCH */
+  .form-control, .dropdown-search{
+    width: 280px;
+  }
+  .darkmode-switch{
+    margin-left: 15px;
+    margin-bottom: 7px;
+  }
+
+  /* LOGIN/REGISTER */
+  .center-container-small{
+    width: 90vw;
+  }
+
+  /* ADD/EDIT/REVIEW */
+  .grid-left-big, .grid-right-big { 
+    padding: 5px;
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+
+  .center-text-title-smaller{
+    font-size: 0.75rem;
+  }
+  .container-text{
+    font-size: 10px;
+  }
+  .auth-element-label{
+    font-size: 12px;
+  }
+  .auth-input{
+    font-size: 12px;
+  }
+
+  /* USERS */
+  .table-text, .btn-sm{
+    font-size: 8px;
+    padding: 2px !important;
+  }
+  
+}
+
+@media screen and (max-width: 405px) {
+  .center-text-title{
+    font-size: 1.25rem;
+  }
+
+
+  /* BROWSE/ITEM */
+  .grid-top-title{
+    font-size: 3.75vh;
+    }
+  .grid-top-text{
+  font-size: 2.25vh;
+  }
+  .grid-right-title{
+    font-size: 12px;
+  }
+  .grid-right-text{
+  font-size: 12px;
+  }
+  .btn-lg{
+    padding: 2px;
+    font-size: 12px;
+  }
+ 
+ /* LOGIN/REGISTER */
+ .center-container-small{
+  width: 95vw;
+  padding: 0px;
+  padding-bottom: 30px;
+  padding-top: 50px;
+}
 }

@@ -4,12 +4,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ImageWithFallback from "../components/Image";
 
-interface Post {
-    title: string,
-    description: string,
-    description2: string;
-  }
-
 const Review = (props : any) => {
     const navigate = useNavigate();
     const {id} = useParams();
@@ -29,23 +23,6 @@ const Review = (props : any) => {
     }, [])
 
 
-    //Old guard
-    // useEffect(() => {
-    //     async function getUser() {
-    //        var response = await fetch('http://localhost:8000/api/user', {
-    //           headers: {'Content-Type': 'application/json'},
-    //           credentials: 'include'
-    //       });
-    //       const content = await response.json();
-    //       console.log(props.name)
-    //       if(!content.name || content.role == false)
-    //       {
-    //         navigate('/');
-    //       }
-    //     }
-    //     getUser();
-
-    //   })
     useEffect(() => {
         (
             async () => {
@@ -186,7 +163,7 @@ const Review = (props : any) => {
         <div className="center-container-full">
             <div className="parent">
                 <div className="grid-left-big"> 
-                    <h1 className="center-text-title-smaller">Memo for administrators</h1>
+                    <h1 className="center-text-title-smaller">Memo for admins</h1>
                     <p className="grid-right-title">Carefully review this user submitted item and:</p>
                     <p className="container-text">◾ make sure all information is correct.</p>
                     <p className="container-text">◾ make necessary edits.</p>
@@ -294,253 +271,8 @@ const Review = (props : any) => {
                     </form>
                 </div>
             </div>
-            {/* <p>Review</p>
-            <p>{id}</p>
-            {/* <p>{post.title}</p>
-            // {JSON.stringify(post)} */}
-
-            {/* <form onSubmit={ConfirmPost}>
-                <input type="title" className="form-control" placeholder="Title" required
-                    value={title} onChange={e => setTitle(e.target.value)}
-                />
-                <input type="description" className="form-control" placeholder="Desc" required
-                    value={description} onChange={e => setDescription(e.target.value)}
-                />
-                 <input type="description2" className="form-control" placeholder="Desc2" required
-                    value={description2} onChange={e => setDescription2(e.target.value)}
-                />
-                <input type="material" className="form-control" placeholder="Material" required
-                    value={material} onChange={e => setMaterial(e.target.value)}
-                />
-                <input type="number" className="form-control" placeholder="Price" required
-                    value={price} onChange={e => setPrice(e.target.value)}
-                />
-                <input type="code" className="form-control" placeholder="Code" required
-                    value={stylecode} onChange={e => setStyleCode(e.target.value)}
-                />
-                <input type="colorway" className="form-control" placeholder="Colorway" required
-                    value={colorway} onChange={e => setColorway(e.target.value)}
-                />
-                <input type="number" className="form-control" placeholder="Brand" required
-                    value={FK_Brand} onChange={e => setBrand(e.target.value)}
-                />
-                <textarea className="form-control" placeholder="Link to the image" required
-                    value={image} onChange={e => setImage(e.target.value)}
-                />
-                
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Confirm edits</button>
-                <button className="w-100 btn btn-lg btn-danger" onClick={() => Delete()} >Delete</button>
-                
-            </form> */}
-            
-            {/* <input type="title" className="form-control" placeholder="Title" required
-                    value={title} onChange={e => setTitle(e.target.value)}
-                />
-
-            <button onClick={() => ConfirmPost()}>Confirm</button>
-            <button onClick={() => Delete()}>Delete</button> */}
-
-            {/* <p>{props.post.title}</p>
-            <p>{props.post.description}</p>
-            <p>{props.post.description2}</p> */}
         </div>
     );
 };
 
 export default Review;
-
-// import React, { SyntheticEvent, useEffect, useState } from "react";
-// import { useLocation, useNavigate, useParams } from "react-router-dom";
-// import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
-
-// const Review = (props : any) => {
-//     const navigate = useNavigate();
-//     const {id} = useParams();
-//     const [title, setTitle] = useState('');
-//     const [description, setDescription] = useState('');
-//     const [description2, setDescription2] = useState('');
-//     const [material, setMaterial] = useState('');
-//     const [price, setPrice] = useState('');
-//     const [styleCode, setStyleCode] = useState('');
-//     const [colorway, setColorway] = useState('');
-//     const [fK_Brand, setBrand] = useState('');
-//     const [image, setImage] = useState('');
-
-//     // useEffect(() => {
-//     //     async function getUser() {
-//     //        var response = await fetch('http://localhost:8000/api/user', {
-//     //           headers: {'Content-Type': 'application/json'},
-//     //           credentials: 'include'
-//     //       });
-//     //       const content = await response.json();
-//     //       console.log(props.name)
-//     //       if(!content.name || content.role == false)
-//     //       {
-//     //         navigate('/');
-//     //       }
-//     //     }
-//     //     getUser();
-
-//     //   })
-
-
-//     useEffect(() => {
-//         (
-//             async () => {
-//                 const response = await fetch('http://localhost:8000/api/Posts/' + id, {
-//                     method: 'GET',
-//                     headers: {'Content-Type': 'application/json'},
-//                     credentials: 'include'
-//                 });
-//                 if(response.ok)
-//                 {
-//                     const content = await response.json();
-//                     if(content.status === 1){
-//                         navigate('/pending');
-//                         window.location.reload();
-//                     }
-//                     //setPost(content);
-//                     setTitle(content.title);
-//                     setDescription(content.description);
-//                     setDescription2(content.description2);
-//                     setMaterial(content.material);
-//                     setPrice(content.price);
-//                     //setReleaseDate(content.releaseDate);
-//                     setStyleCode(content.styleCode);
-//                     setColorway(content.colorway);
-//                     setBrand(content.fK_Brand);
-//                     setImage(content.image);
-//                     //console.log(content);
-//                     if(!image){
-//                         setImage("https://")
-//                     }
-
-//                 }
-//                 else alert("Error");
-//             }
-//           )();
-//     }, []);
-
-//     const ConfirmPost = async (e: SyntheticEvent) => {
-//         const MySwal = withReactContent(Swal)
-//         e.preventDefault();
-//         const response = await fetch('http://localhost:8000/api/Posts/confirm/' + id, {
-//                     method: 'POST',
-//                     headers: {'Content-Type': 'application/json'},
-//                     credentials: 'include',
-//                     body: JSON.stringify({title, description, description2, material, price, styleCode, colorway, fK_Brand, image})
-//                 });
-//                 if(response.ok)
-//                 {
-//                     //const content = await response.json();
-//                     //alert(content.title);
-//                     //setPost(content);
-//                     //alert("prideta")
-//                     //navigate('/pbrowse/all');
-//                     MySwal.fire({
-//                         icon: 'success',
-//                         title: <p>Sėkmingai patvirtinta!</p>,
-//                         showConfirmButton: false,
-//                         showCancelButton: false,
-//                         showCloseButton: false,
-//                         timer: 1200
-//                         //didOpen: () => {
-//                             //MySwal.clickConfirm()
-//                         //}
-//                         }).then(() =>{
-//                             navigate('/pending');
-//                         })
-
-
-//                 }
-//                 else alert("Klaida");
-//     }
-//     const Delete = async () => {
-//         const MySwal = withReactContent(Swal)
-//         const response = await fetch('http://localhost:8000/api/Posts/' + id, {
-//                     method: 'DELETE',
-//                     //headers: {'Content-Type': 'application/json'},
-//                     credentials: 'include'
-//                 });
-//                 if(response.ok)
-//                 {
-//                     MySwal.fire({
-//                         icon: 'success',
-//                         title: <p>Sėkmingai ištrinta!</p>,
-//                         showConfirmButton: false,
-//                         showCancelButton: false,
-//                         showCloseButton: false,
-//                         timer: 1200
-//                         //didOpen: () => {
-//                             //MySwal.clickConfirm()
-//                         //}
-//                         }).then(() =>{
-//                             navigate('/pending');
-//                         })
-
-
-//                 }
-//                 else alert("Klaida");
-//     }
-
-
-
-//     return (
-//         <div>
-//             <p>Review</p>
-//             <p>{id}</p>
-//             {/* <p>{post.title}</p>
-//             // {JSON.stringify(post)} */}
-
-//             <form onSubmit={ConfirmPost}>
-//                 <input type="title" className="form-control" placeholder="Title" required
-//                     value={title} onChange={e => setTitle(e.target.value)}
-//                 />
-//                 <input type="description" className="form-control" placeholder="Desc" required
-//                     value={description} onChange={e => setDescription(e.target.value)}
-//                 />
-//                  <input type="description2" className="form-control" placeholder="Desc2" required
-//                     value={description2} onChange={e => setDescription2(e.target.value)}
-//                 />
-//                 <input type="material" className="form-control" placeholder="Material" required
-//                     value={material} onChange={e => setMaterial(e.target.value)}
-//                 />
-//                 <input type="number" className="form-control" placeholder="Price" required
-//                     value={price} onChange={e => setPrice(e.target.value)}
-//                 />
-//                 {/* <input type="date" className="form-control" placeholder="Release Date" required
-//                     value={releasedate} onChange={e => setReleaseDate(e.target.value)}
-//                 /> */}
-//                 <input type="code" className="form-control" placeholder="Code" required
-//                     value={styleCode} onChange={e => setStyleCode(e.target.value)}
-//                 />
-//                 <input type="colorway" className="form-control" placeholder="Colorway" required
-//                     value={colorway} onChange={e => setColorway(e.target.value)}
-//                 />
-//                 <input type="number" className="form-control" placeholder="Brand" required
-//                     value={fK_Brand} onChange={e => setBrand(e.target.value)}
-//                 />
-//                 <textarea className="form-control" placeholder="Link to the image" required
-//                     value={image} onChange={e => setImage(e.target.value)}
-//                 />
-                
-//                 <button className="w-100 btn btn-lg btn-primary" type="submit" >Confirm</button>
-//                 <button className="w-100 btn btn-lg btn-danger" onClick={() => Delete()} >Delete</button>
-//             </form>
-            
-//             {/* <input type="title" className="form-control" placeholder="Title" required
-//                     value={title} onChange={e => setTitle(e.target.value)}
-//                 />
-
-//             <button onClick={() => ConfirmPost()}>Confirm</button>
-//             <button onClick={() => Delete()}>Delete</button> */}
-
-//             {/* <p>{props.post.title}</p>
-//             <p>{props.post.description}</p>
-//             <p>{props.post.description2}</p> */}
-//         </div>
-//     );
-// };
-
-// export default Review;
